@@ -1,0 +1,10 @@
+main{
+  background-color: var(--White);
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: min-content auto;
+  gap: 20px;
+  padding: 20px;
+  align-items: center;
+}

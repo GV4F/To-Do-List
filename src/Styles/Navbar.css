@@ -1,0 +1,87 @@
+:root{
+  --TransitionMain: .5s ease-in;
+}
+
+.navbar{
+  background-color: var(--Lilac);
+  height: 95%;
+  width: 70px;
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 15px;
+  overflow: hidden;
+  box-shadow: var(--Shadow);
+  transition: width var(--TransitionMain);
+}
+.navbar.active{ width: 100%; }
+/* * REUTILIZABLE */
+.navbar_header-icon,
+.navbar_buttons-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  font-size: 1.3em;
+}
+/* */
+.navbar .navbar_header, .navbar_buttons a{
+  display: flex;
+  align-items: center;
+  width: 200px;
+  gap: 15px;
+  color: #222;
+  font-weight: 500;
+}
+.navbar_header-icon{ background-color: transparent; }
+/* * SEARCH */
+.navbar .navbar_search{
+  border-radius: 50px;
+  width: 200px;
+  margin: 15px 0;
+  transition: background-color var(--TransitionMain);
+}
+.navbar.active .navbar_search{ 
+  background-color: var(--White); 
+  transition: background-color .5s ease-in;
+}
+.navbar .navbar_search form{
+  display: grid;
+  grid-template-columns: 20% 80%;
+  gap: 15px;
+  transition: gap var(--TransitionMain);
+}
+.navbar.active .navbar_search form{
+  transition: gap var(--TransitionMain);
+  gap: 0;
+}
+.navbar .navbar_search form > .navbar_search-btn{
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+}
+.navbar .navbar_search form > input[type="text"]{
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+/* * BUTTONS */
+.navbar_buttons{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.navbar .navbar_buttons a{ transition: background-color var(--TransitionMain);}
+.navbar .navbar_buttons a{ border-radius: 12px; }
+.navbar.active .navbar_buttons a{
+  background-color: var(--LightTurquoise);
+  transition: background-color .1s ease-in;
+}
+.navbar_buttons a > .navbar_buttons-icon{
+  background-color: var(--LightTurquoise);
+  color: #222;
+}

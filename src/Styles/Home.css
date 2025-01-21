@@ -1,0 +1,40 @@
+/* * HEADER */
+.home{
+  position: relative;
+  padding: 20px;
+  height: 100%;
+}
+.home_header{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+/* .home_header-h1{} */
+.home_header-total{ font-size: 1.2em; }
+/* * BUTTONS */
+.home .home_buttons{
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  padding: 10px 20px;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: var(--Lilac);
+  border-radius: 50px;
+  box-shadow: var(--Shadow);
+}
+.home .home_buttons > button{
+  background-color: var(--LightTurquoise);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home .home_buttons > .home_button-add{ font-size: 1.6em; }
+.home .home_buttons > .home_button-settings{ font-size: 1.3em; }
