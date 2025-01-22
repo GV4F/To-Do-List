@@ -11,6 +11,12 @@
 }
 /* .home_header-h1{} */
 .home_header-total{ font-size: 1.2em; }
+/* * MAIN */
+.home .home_task-container{
+  display: grid;
+  gap: 10px;
+  margin: 20px 0;
+}
 /* * BUTTONS */
 .home .home_buttons{
   position: absolute;

@@ -1,7 +1,8 @@
 export interface TaskInterface {
   id: number;
-  state: string;
+  state: boolean;
   title: string;
   date: Date;
   priority: string;
+  description?: string;
 }

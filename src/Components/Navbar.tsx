@@ -61,17 +61,6 @@ function Navbar(): React.JSX.Element {
           <div className="navbar_buttons-text">Pending</div>
         </Link>
       </div>
-      
-      <div className="navbar_lists">
-        <div className="navbar_lists-header">
-          <form>
-            <button className="navbar_lists-header--add"><IoIosAdd /></button>
-            <p className="navbar_lists-header--title">Lists</p>
-          </form>
-        </div>
-        
-        <div className="navbar_lists-main"></div>
-      </div>
     </nav>
   )
 }

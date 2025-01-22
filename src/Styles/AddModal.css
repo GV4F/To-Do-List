@@ -25,15 +25,18 @@
   box-shadow: var(--Shadow);
 }
 .modal form{
-  /* background-color: red; */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 25% 15% 60%;
+  gap: 10px;
   width: 100%;
+  height: 80%;
 }
 .modal form .modal_input-task{
   width: 90%;
   background-color: transparent;
   font-size: 24px;
   padding: 5px;
-  /* border-bottom: 2px solid #222; */
 }
 .modal form .modal_form-info{
   display: flex;
@@ -53,18 +56,31 @@
   border-radius: 4px;
   font-size: 1.1em;
 }
-.modal form .modal_form-info label > input[type="text"]{
+.modal form .modal_form-info label > input[type="text"], input[type="date"], select{
   background-color: transparent;
   font-size: 1em;
 }
+.modal form .modal_form-info label > input[type="date"]{
+  -webkit-appearance: none; /* Para navegadores basados en WebKit (Chrome, Safari, etc.) */
+  -moz-appearance: textfield; /* Para Firefox */
+  appearance: none; /* Propiedad estándar */
+  cursor: pointer;
+}
+.modal form .modal_form-info label > select{
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding-right: 20px;
+}
+.modal form .modal_form-info label > select option{ background-color: var(--Pink); }
 .modal form textarea{
   resize: none;
   width: 100%;
-  height: 100%;
   background-color: var(--Pink);
   border-radius: 12px;
   padding: 10px;
 }
+.modal form textarea::selection{ background-color: var(--White); }
 .modal form textarea::-webkit-scrollbar{
   background-color: var(--Lilac);
   border-radius: 50px;
@@ -86,4 +102,25 @@
   border-radius: 50%;
   background-color: var(--Urgent);
   box-shadow: var(--Shadow);
+  transition: transform .1s ease-in;
 }
+.modal .modal_add{
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%) scale(1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  padding: 5px 0px;
+  border-radius: 50px;
+  background: var(--LightTurquoise);
+  font-weight: bolder;
+  box-shadow: var(--Shadow);
+  transition: transform .1s ease-in;
+}
+.modal .modal_add:active{ transform: translateX(-50%) scale(.8); }
+.modal_close:active{ transform: scale(.8); }
+/* * HIDDEN */
+.hidden{ display: none; }

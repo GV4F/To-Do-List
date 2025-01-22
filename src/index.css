@@ -24,6 +24,7 @@
 }
 button{ cursor: pointer; }
 input[type="text"],
+input[type="date"],
 textarea,
 button{
   border: none;
