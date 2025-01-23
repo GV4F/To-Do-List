@@ -1,0 +1,76 @@
+.editModal_container{
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  background: rgba(111, 111, 111, 0.60);
+  backdrop-filter: blur(2.5px);
+}
+.editModal_container > .editModal{
+  position: relative;
+  display: flex;
+  width: 35%;
+  height: 30%;
+  padding: 30px 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 32px;
+  background: var(--White);
+  box-shadow: var(--Shadow);
+}
+.editModal > form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.editModal .form_options label{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+.editModal .form_options label > span{ font-size: 18px; }
+.editModal > form > input, select{
+  background-color: var(--Pink);
+  border-radius: 12px;
+  font-size: 16px;
+  padding: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.editModal form > button{
+  background-color: var(--LightTurquoise);
+  color: #222;
+  width: 100px;
+  height: 30px;
+  font-weight: bolder;
+  border-radius: 50px;
+  box-shadow: var(--Shadow);
+}
+.editModal .editModal_close{
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--Urgent);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transform: scale(1);
+  transition: transform .1s ease-in;
+}
+.editModal .editModal_close:active{ transform: scale(.9); }
+/* ! HIDDEN */
+.hidden{ display: none !important; }

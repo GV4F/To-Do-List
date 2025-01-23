@@ -37,11 +37,10 @@ export class TaskClass {
     }
 
     static CompleteTask(props: { id: number, newState: boolean, board: TaskInterface[] }){
-      const index = props.board.findIndex(e => e.id === props.id);
-      const preUpdate = props.board[index];
-      props.board[index] = {
-        ...preUpdate,
-        state: props.newState
-      }
+      const updateBoard = props.board.map((element)=>{
+        if(element.id === props.id){ element.state = props.newState; }
+        return element;
+      });
+      return updateBoard;
     }
   }

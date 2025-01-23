@@ -1,10 +1,12 @@
 import React, { Dispatch, SetStateAction, useState, useContext } from "react"
-import { TaskClass } from "./TaskClass";
+import { TaskClass } from "./TaskClass"
+import { DataBaseContext } from "../Context/DataBaseContext"
+import { parseISO } from "date-fns"
 import "../Styles/AddModal.css"
+
 import { TbCalendarClock } from "react-icons/tb";
 import { IoIosFlag } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
-import { DataBaseContext } from "../Context/DataBaseContext";
 
 
 function AddModal(props: { activeModal: boolean, setActiveModal: Dispatch<SetStateAction<boolean>> }): React.JSX.Element {
@@ -14,18 +16,23 @@ function AddModal(props: { activeModal: boolean, setActiveModal: Dispatch<SetSta
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [date, setDate] = useState<string>("");
-  const [priority, setPriority] = useState<string>("");
+  const [priority, setPriority] = useState<string>("Urgent");
 
   const resetValues = ()=>{
     setTitle("");
     setDescription("");
     setDate("");
-    setPriority("");
+    setPriority("Urgent");
   }
   const add = ()=>{
-    const newTask = TaskClass.CreateTask({ title, state: false, date: new Date(date), priority, description: description});
-    setBoard([...board, newTask]);
-    resetValues();
+    if(title.length >= 1 && priority.length >= 1 && date.length >= 1){
+      const newTask = TaskClass.CreateTask({ title, state: false, date: parseISO(date), priority, description: description});
+      setBoard([...board, newTask]);
+      resetValues();
+      setTimeout(() => {
+        props.setActiveModal(false);
+      }, 300);
+    }
   }
   
 

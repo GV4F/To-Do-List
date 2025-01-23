@@ -1,11 +1,11 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { format } from "date-fns";
 import { TaskInterface } from "../Context/DataBaseContext.model";
 import { TaskClass } from "./TaskClass";
+import EditModal from "./EditModal";
 import "../Styles/Task.css"
 
 import { FaRegCheckCircle } from "react-icons/fa";
-// import { MdOutlinePending } from "react-icons/md";
 import { TbCalendarClock } from "react-icons/tb";
 import { IoIosFlag } from "react-icons/io";
 import { LuTrash2 } from "react-icons/lu";
@@ -22,31 +22,41 @@ function Task({
     const rta = TaskClass.DeleteTask({id, board});
     setBoard(rta);
   }
+  const complete = ()=>{
+    const updateBoard = TaskClass.CompleteTask({ id, newState: !state, board});
+    setBoard(updateBoard);
+  }
+  
+  const [editModal, setEditModal] = useState<boolean>(false);
   
   return (
-    <div className={`task ${state ? "completed" : ""}`} key={id}>
-      <div className="task_main">
-        <button className="task_main-btn task_btn" onClick={()=>{
-        }}><FaRegCheckCircle/></button>
-        <p className="task_main-title">{ title }</p>
-      </div>
-
-      <div className="task_info">
-        <div className="task_date">
-          <span className="task_date-icon"><TbCalendarClock /></span>
-          <p className="task_date-title">{ format(date, "dd/mm/yyyy") }</p>
+    <>
+      <EditModal editModal={editModal} setEditModal={setEditModal} />
+      <div className={`task ${state ? "completed" : ""}`} key={id}>
+        <div className="task_main">
+          <button className="task_main-btn task_btn" onClick={complete}><FaRegCheckCircle/></button>
+          <p className="task_main-title">{ title }</p>
         </div>
-        <div className="task_priority">
-          <span className="task_priority-icon"><IoIosFlag /></span>
-          <p className="task_priority-title">{ priority }</p>
+
+        <div className="task_info">
+          <div className="task_date">
+            <span className="task_date-icon"><TbCalendarClock /></span>
+            <p className="task_date-title">{ format(date, "dd/MM/yyyy") }</p>
+          </div>
+          <div className="task_priority">
+            <span className="task_priority-icon"><IoIosFlag /></span>
+            <p className="task_priority-title">{ priority }</p>
+          </div>
+        </div>
+
+        <div className="task_btns">
+          <button className="task-btns-trash task_btn" onClick={deleteFunction}><LuTrash2 /></button>
+          <button className="task-btns-edit task_btn" onClick={()=>{
+            setEditModal(true);
+          }}><BsPencil /></button>
         </div>
       </div>
-
-      <div className="task_btns">
-        <button className="task-btns-trash task_btn" onClick={deleteFunction}><LuTrash2 /></button>
-        <button className="task-btns-edit task_btn"><BsPencil /></button>
-      </div>
-    </div>
+    </>
   )
 }
 
