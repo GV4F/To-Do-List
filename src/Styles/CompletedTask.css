@@ -1,0 +1,19 @@
+.completedTask,
+.incompletedTask{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+.completedTask .completedTask_body,
+.incompletedTask .incompletedTask_board{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  grid-auto-flow: row;
+  gap: 10px;
+  width: 100%;
+  height: max-content;
+}

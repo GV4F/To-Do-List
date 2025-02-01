@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "../Styles/Navbar.css";
 // * ICONOS
@@ -7,17 +7,15 @@ import { IoSearch } from "react-icons/io5";
 import { IoIosHome } from "react-icons/io";
 import { FaTasks } from "react-icons/fa";
 import { FaRegCheckCircle } from "react-icons/fa";
-import { MdOutlinePending } from "react-icons/md";
 import { MdOutlinePendingActions } from "react-icons/md";
-import { IoIosAdd } from "react-icons/io";
 import { NavbarDisplayContext } from "../Context/NavbarDisplayContext";
+import { SearchContext } from "../Context/SearchContext";
 
 
 function Navbar(): React.JSX.Element {
 
   const { active, setActive } = useContext(NavbarDisplayContext);
-
-  const [value, setValue] = useState<string>("");
+  const { search, setSearch } = useContext(SearchContext);
 
   return (
     <nav className={`navbar ${active ? "active" : ""}`}>
@@ -31,9 +29,10 @@ function Navbar(): React.JSX.Element {
       <div className="navbar_search">
         <form onSubmit={(e)=> e.preventDefault()}>
           <button className="navbar_search-btn"><IoSearch /></button>
-          <input type="text" placeholder="Search" className="navbar_search-input" value={value}
+          <input type="text" placeholder="Search" className="navbar_search-input" value={search}
           onChange={(e)=> {
-            setValue(e.target.value);
+            setSearch(e.target.value);
+            console.log(search);
           }}
           />
         </form>
@@ -51,10 +50,6 @@ function Navbar(): React.JSX.Element {
         <Link to="/tasks/completed">
           <div className="navbar_buttons-icon"><FaRegCheckCircle /></div>
           <div className="navbar_buttons-text">Completed</div>
-        </Link>
-        <Link to="/tasks/uncoming">
-          <div className="navbar_buttons-icon"><MdOutlinePending /></div>
-          <div className="navbar_buttons-text">Uncoming</div>
         </Link>
         <Link to="/tasks/pending">
           <div className="navbar_buttons-icon"><MdOutlinePendingActions /></div>

@@ -5,7 +5,7 @@ import { TaskClass } from "./TaskClass";
 import EditModal from "./EditModal";
 import "../Styles/Task.css"
 
-import { FaRegCheckCircle } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 import { TbCalendarClock } from "react-icons/tb";
 import { IoIosFlag } from "react-icons/io";
 import { LuTrash2 } from "react-icons/lu";
@@ -28,13 +28,21 @@ function Task({
   }
   
   const [editModal, setEditModal] = useState<boolean>(false);
+
+  const setColorFlag = ()=>{
+    switch (priority) {
+      case "Urgent": return "flag-urgent";
+      case "Medium": return "flag-medium";
+      case "Low": return "flag-low";
+    }
+  }
   
   return (
     <>
-      <EditModal editModal={editModal} setEditModal={setEditModal} />
+      <EditModal editModal={editModal} setEditModal={setEditModal} id={id} />
       <div className={`task ${state ? "completed" : ""}`} key={id}>
         <div className="task_main">
-          <button className="task_main-btn task_btn" onClick={complete}><FaRegCheckCircle/></button>
+          <button className="task_main-btn task_btn" onClick={complete}><FaCheck/></button>
           <p className="task_main-title">{ title }</p>
         </div>
 
@@ -44,7 +52,7 @@ function Task({
             <p className="task_date-title">{ format(date, "dd/MM/yyyy") }</p>
           </div>
           <div className="task_priority">
-            <span className="task_priority-icon"><IoIosFlag /></span>
+            <span className={`task_priority-icon ${setColorFlag()}`}><IoIosFlag /></span>
             <p className="task_priority-title">{ priority }</p>
           </div>
         </div>

@@ -2,6 +2,9 @@ import { TaskInterface } from "../Context/DataBaseContext.model";
 
 export interface CreateTaskInterface extends Omit<TaskInterface, "id">{}
 
+export type ValueToChange = "Title" | "Date" | "State";
+export type NewValue = string | Date | boolean;
+
 export class TaskClass {
 
 
@@ -22,13 +25,23 @@ export class TaskClass {
       return newTask;
     }
 
-    static UpdateTask(props: { id: number, newTitle: string, board: TaskInterface[] }){
-      const index = props.board.findIndex(e => e.id === props.id);
-      const preUpdate = props.board[index];
-      props.board[index] = {
-        ...preUpdate, 
-        title: props.newTitle
-      }
+    static UpdateTask(props: { id: number, valueToChange: ValueToChange , newValue: NewValue, board: TaskInterface[] }){
+      const updateBoard = props.board.map((e)=>{
+        if(e.id === props.id){
+          if(props.valueToChange === "Title" && typeof props.newValue === "string" ){
+            e.title = props.newValue;
+          }
+          if(props.valueToChange === "Date" && typeof props.newValue === "object" ){
+            e.date = props.newValue;
+          }
+          if(props.valueToChange === "State" && typeof props.newValue === "boolean" ){
+            e.state = props.newValue;
+          }
+        }
+
+        return e;
+      })
+      return updateBoard;
     }
 
     static DeleteTask(props: { id: number, board: TaskInterface[] }){

@@ -3,3 +3,25 @@
   padding: 20px;
   height: 100%;
 }
+.allTasks .allTask_board{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: minmax(150px, auto);
+  grid-auto-flow: row;
+  grid-auto-rows: minmax(150px, auto);
+  gap: 10px;
+  width: 100%;
+  height: max-content;
+}
+.allTask_addTask{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3em;
+  background-color: #fffeac;
+  border: 1px solid #ffd667;
+  border-radius: 24px;
+  transition: transform .1s ease-in;
+  cursor: pointer;
+}
+.allTask_addTask:active{ transform: scale(.9); }
