@@ -17,6 +17,16 @@
   gap: 10px;
   margin: 20px 0;
 }
+.home .home_task-container.empty{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+}
+.home .home_task-container .emptyTask{
+  font-size: 1.5em;
+  color: var(--DarkTurquoise);
+}
 /* * BUTTONS */
 .home .home_buttons{
   position: absolute;

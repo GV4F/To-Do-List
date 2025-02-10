@@ -11,16 +11,19 @@ import { LuSettings2 } from "react-icons/lu";
 import { IoIosAdd } from "react-icons/io";
 
 function Home(): React.JSX.Element {
-
-  const [activeModal, setActiveModal] = useState(false);
-
+  
   const { board } = useContext(DataBaseContext);
+
+  const [activeModal, setActiveModal] = useState<boolean>(false);
+  
 
   const initBoard = ()=> {
     const today = new Date();
     const dailyTask = board.filter((e)=> isSameDay(e.date, today) && e.state === false)
     return dailyTask;
   }
+
+  
   
   return ( 
     <>
@@ -30,13 +33,17 @@ function Home(): React.JSX.Element {
           <div className="home_header-total">({ initBoard().length })</div>
         </div>
         
-        <div className="home_task-container">
+        <div className={`home_task-container ${initBoard().length == 0 ? "empty" : ""}`}>
           {
-          initBoard().map((e)=>{
-            return (
-              <Task id={e.id} title={e.title} state={e.state} priority={e.priority} date={e.date} />
+            initBoard().length > 0 ? (
+              initBoard().map((e)=>{
+                return (
+                  <Task id={e.id} title={e.title} state={e.state} priority={e.priority} date={e.date} />
+                )
+              })
+            ) : (
+              <div className="emptyTask">You don´t have Homework</div>
             )
-          })
           }
         </div>
 
