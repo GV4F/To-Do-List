@@ -17,3 +17,12 @@
   width: 100%;
   height: max-content;
 }
+.completedTask .completedTask_body.empty,
+.incompletedTask .incompletedTask_board.empty{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+  font-size: 1.5em;
+  color: var(--DarkTurquoise);
+}

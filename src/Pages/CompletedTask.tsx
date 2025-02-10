@@ -13,13 +13,17 @@ function CompletedTask(): React.JSX.Element {
   return (
     <div className="completedTask">
       <div className="completedTask_header"> <h1>Completed Tasks</h1> </div>
-      <div className="completedTask_body">
+      <div className={`completedTask_body ${filterBoard().length == 0 ? "empty" : ""}`}>
       {
-        filterBoard().map((e)=>{
-          return (
-            <TaskSquare id={e.id} title={e.title} state={e.state} date={e.date} priority={e.priority} description={e.description} />
-          )
-        })
+        filterBoard().length > 0 ? (
+          filterBoard().map((e)=>{
+            return (
+              <TaskSquare id={e.id} title={e.title} state={e.state} date={e.date} priority={e.priority} description={e.description} />
+            )
+          })
+        ) : (
+          <div>No tasks have been completed</div>
+        )
       }
       </div>
     </div>

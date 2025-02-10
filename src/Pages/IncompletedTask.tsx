@@ -11,13 +11,17 @@ function IncompletedTask(): React.JSX.Element {
   return (
     <div className="incompletedTask">
       <h1 className="incompletedTask_header">Incompleted Tasks</h1>
-      <div className="incompletedTask_board">
+      <div className={`incompletedTask_board ${filterBoard().length == 0 ? "empty" : ""}`}>
         {
-          filterBoard().map((e)=>{
-            return (
-              <TaskSquare id={e.id} title={e.title} state={e.state} date={e.date} priority={e.priority} description={e.description} />
-            )
-          })
+          filterBoard().length > 0 ? (
+            filterBoard().map((e)=>{
+              return (
+                <TaskSquare id={e.id} title={e.title} state={e.state} date={e.date} priority={e.priority} description={e.description} />
+              )
+            })
+          ) : (
+            <div>All tasks are completed</div>
+          )
         }
       </div>
     </div>
