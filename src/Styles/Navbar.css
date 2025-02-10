@@ -77,6 +77,7 @@
 }
 .navbar .navbar_buttons a{ transition: background-color var(--TransitionMain);}
 .navbar .navbar_buttons a{ border-radius: 12px; }
+
 .navbar.active .navbar_buttons a{
   background-color: var(--LightTurquoise);
   transition: background-color .1s ease-in;
@@ -84,4 +85,12 @@
 .navbar_buttons a > .navbar_buttons-icon{
   background-color: var(--LightTurquoise);
   color: #222;
+}
+.navbar.active .navbar_buttons a.btnActive{
+  background-color: var(--DarkTurquoise);
+  color: var(--White);
+}
+.navbar .navbar_buttons a.btnActive > .navbar_buttons-icon{
+  background-color: var(--DarkTurquoise);
+  color: var(--White);
 }

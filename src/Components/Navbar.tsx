@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "../Styles/Navbar.css";
 // * ICONOS
@@ -16,6 +16,7 @@ function Navbar(): React.JSX.Element {
 
   const { active, setActive } = useContext(NavbarDisplayContext);
   const { search, setSearch } = useContext(SearchContext);
+  const [btnActive, setBtnActive] = useState<number>(0);
 
   return (
     <nav className={`navbar ${active ? "active" : ""}`}>
@@ -39,19 +40,19 @@ function Navbar(): React.JSX.Element {
       </div>
 
       <div className="navbar_buttons">
-        <Link to="/">
+        <Link to="/" className={`${btnActive == 0 ? "btnActive" : ""}`} onClick={()=> setBtnActive(0)}>
           <div className="navbar_buttons-icon"><IoIosHome /></div>
           <div className="navbar_buttons-text">Home</div>
         </Link>
-        <Link to="/tasks">
+        <Link to="/tasks" className={`${btnActive == 1 ? "btnActive" : ""}`} onClick={()=> setBtnActive(1)}>
           <div className="navbar_buttons-icon"><FaTasks /></div>
           <div className="navbar_buttons-text">Tasks</div>
         </Link>
-        <Link to="/tasks/completed">
+        <Link to="/tasks/completed" className={`${btnActive == 2 ? "btnActive" : ""}`} onClick={()=> setBtnActive(2)}>
           <div className="navbar_buttons-icon"><FaRegCheckCircle /></div>
           <div className="navbar_buttons-text">Completed</div>
         </Link>
-        <Link to="/tasks/pending">
+        <Link to="/tasks/pending" className={`${btnActive == 3 ? "btnActive" : ""}`} onClick={()=> setBtnActive(3)}>
           <div className="navbar_buttons-icon"><MdOutlinePendingActions /></div>
           <div className="navbar_buttons-text">Pending</div>
         </Link>
