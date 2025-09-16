@@ -1,6 +1,5 @@
-import React, { Dispatch, SetStateAction, useState, useContext } from "react"
+import React, { Dispatch, SetStateAction, useState } from "react"
 import { TaskClass } from "./TaskClass"
-import { DataBaseContext } from "../Context/DataBaseContext"
 import { parseISO } from "date-fns"
 import "../Styles/AddModal.css"
 
@@ -10,8 +9,6 @@ import { IoClose } from "react-icons/io5";
 
 
 function AddModal(props: { activeModal: boolean, setActiveModal: Dispatch<SetStateAction<boolean>> }): React.JSX.Element {
-
-  const { board, setBoard } = useContext(DataBaseContext);
 
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -27,7 +24,7 @@ function AddModal(props: { activeModal: boolean, setActiveModal: Dispatch<SetSta
   const add = ()=>{
     if(title.length >= 1 && priority.length >= 1 && date.length >= 1){
       const newTask = TaskClass.CreateTask({ title, state: false, date: parseISO(date), priority, description: description});
-      setBoard([...board, newTask]);
+      // setBoard([...board, newTask]);
       resetValues();
       setTimeout(() => {
         props.setActiveModal(false);
